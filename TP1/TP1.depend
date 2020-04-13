@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
 1586374890 source:c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\operaciones matemáticas.c
 
-1586733723 source:c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\opmate.c
+1586814534 source:c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\opmate.c
 	"opMate.h"
 
-1586731121 c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\opmate.h
+1586815800 c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\opmate.h
 	<stdio.h>
 	<stdlib.h>
 
-1586812094 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\main.c
+1586814342 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\main.c
 	<stdio.h>
 	<stdlib.h>
 	"opMate.h"

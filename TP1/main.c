@@ -149,12 +149,12 @@ void casos(int opcion)
     if(factA!=0)
         printf("\nEl factorial de A es: %lu",factA);
     else
-        printf("\nPor regla matemática el primer operando no tiene factorial");
+        printf("\nPor regla matematica el primer operando no tiene factorial");
     // si el numero ingresado es menor a 0 se imprime que no existe el factorial de tal numero
     if(factB!=0)
     printf("\nEl factorial de B es: %lu",factB);
     else
-        printf("\nPor regla matemática el segundo operando no tiene factorial");
+        printf("\nPor regla matematica el segundo operando no tiene factorial");
     break;
     }
     //en caso de que se oprima cualquier otra opcion que no sea del 1 al 5
