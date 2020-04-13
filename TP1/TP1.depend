@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1586374890 source:c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\operaciones matemáticas.c
+
+1586733723 source:c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\opmate.c
+	"opMate.h"
+
+1586731121 c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\opmate.h
+	<stdio.h>
+	<stdlib.h>
+
+1586812094 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"opMate.h"
+	"funcVarias.h"
+
+1586729722 source:c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\funcvarias.c
+	"funcVarias.h"
+
+1586724763 c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\funcvarias.h
+	<stdio.h>
+	<stdlib.h>
+
