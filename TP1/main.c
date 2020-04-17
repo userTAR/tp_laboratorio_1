@@ -4,7 +4,7 @@
 #include "funcVarias.h"
 int menu();
 void casos(int);
-float ingres(char[]);
+float ingreso(char[],int);
 /* CONSIGNAS:
 Hacer una calculadora. Para ello el programa iniciará y contará con un menú de opciones:
 1. Ingresar 1er operando (A=x)          4. Informar resultados
@@ -16,12 +16,13 @@ c) Calcular la division (A/B)           e) “El factorial de A es: r1 y El factor
 d) Calcular la multiplicacion (A*B)     5. Salir
 e) Calcular el factorial (A!)
 */
-void main()
+int main(void)
 {
     //variable para el switch
     int opcion;
     opcion=menu();
     casos(opcion);
+    system("cls");
 }
 
 int menu(void)
@@ -35,11 +36,12 @@ int menu(void)
     scanf("%d",&opcion);
     return opcion;
 }
-float ingreso(char operando[])
+float ingreso(char operando[], int numero)
 {
     float i;
     printf("Ingresar el %s operando: ", operando);
     scanf("%f",&i);
+    printf("El %d\247 operando ingresado es: %.2f",numero,i);
     return i;
 }
 void casos(int opcion)
@@ -53,7 +55,7 @@ void casos(int opcion)
     int flagOpcion3=0;
     //variables para las operaciones
     float sum,rest,multplic,div;
-    long unsigned int factA,factB;
+    unsigned long int factA,factB;
     //variables para la comparacion de decimal o no decimal
     int compSum,compRest,compDiv,compMultplic;
    //si la opcion es 5 salgo directamente de la consola
@@ -64,19 +66,19 @@ void casos(int opcion)
     //escaneo el primer numero en caso de que el usuario ingrese esta opcion
     case 1:
     flagOperando1=1;
-    A=ingreso("primer");
+    A=ingreso("primer",1);
     break;
 
     //escaneo el segundo numero en caso de que el usuario ingrese esta opcion
     case 2:
     flagOperando2=1;
-    B=ingreso("segundo");
+    B=ingreso("segundo",2);
     break;
 
 
     case 3:
     flagOpcion3=1;
-    //LINEA 66 A 80: chequeo que ya se hayan ingresado los operandos
+    //LINEA 80 A 94: chequeo que ya se hayan ingresado los operandos
     if(flagOperando1==0&&flagOperando2==0)
     {
         printf("No ingreso ningun operando");
@@ -107,7 +109,7 @@ void casos(int opcion)
     }
 
     case 4:
-    //LINEA 99 A 104 : chequeo que se hayan ingresado la opcion 3
+    //LINEA 111 A 115: chequeo que se hayan ingresado la opcion 3
     if(flagOpcion3==0)
     {
     printf("Debe ingresar primero la opcion 3");
@@ -154,7 +156,9 @@ void casos(int opcion)
     if(factB!=0)
     printf("\nEl factorial de B es: %lu",factB);
     else
+    {
         printf("\nPor regla matematica el segundo operando no tiene factorial");
+    }
     break;
     }
     //en caso de que se oprima cualquier otra opcion que no sea del 1 al 5
@@ -165,7 +169,7 @@ void casos(int opcion)
     break;
     }
 
-    //se vuelve a preguntar que otra opcion quiere ingresar para seguir con el muestreo
+    //se vuelve a preguntar que otra opcion quiere ingresar para seguir con la opcion que se elija
     printf("\nIngrese otra opcion: ");
     scanf("%d",&opcion);
     }
