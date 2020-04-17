@@ -22,7 +22,6 @@ int main(void)
     int opcion;
     opcion=menu();
     casos(opcion);
-    system("cls");
 }
 
 int menu(void)
@@ -42,6 +41,7 @@ float ingreso(char operando[], int numero)
     printf("Ingresar el %s operando: ", operando);
     scanf("%f",&i);
     printf("El %d\247 operando ingresado es: %.2f",numero,i);
+    printf("\nAVISO:Si el operando supera el numero 12, el factorial no sera el correcto");
     return i;
 }
 void casos(int opcion)
@@ -148,13 +148,15 @@ void casos(int opcion)
         //si el numero no tiene coma
         printf("\nEl resultado A*B es: %d",(int)multplic);
     //si el numero ingresado es menor a 0 se imprime que no existe el factorial de tal numero
-    if(factA!=0)
+    if(factA!=0){
         printf("\nEl factorial de A es: %lu",factA);
+    }
     else
         printf("\nPor regla matematica el primer operando no tiene factorial");
     // si el numero ingresado es menor a 0 se imprime que no existe el factorial de tal numero
-    if(factB!=0)
+    if(factB!=0){
     printf("\nEl factorial de B es: %lu",factB);
+    }
     else
     {
         printf("\nPor regla matematica el segundo operando no tiene factorial");
