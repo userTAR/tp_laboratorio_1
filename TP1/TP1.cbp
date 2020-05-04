@@ -33,17 +33,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="../../../Bibliotecas personalizadas/funcVarias.c">
+		<Unit filename="funcVarias.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../../Bibliotecas personalizadas/funcVarias.h" />
-		<Unit filename="../../../Bibliotecas personalizadas/opMate.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../../Bibliotecas personalizadas/opMate.h" />
+		<Unit filename="funcVarias.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="opMate.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="opMate.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
