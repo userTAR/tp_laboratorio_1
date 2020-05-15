@@ -6,17 +6,17 @@
 	<stdio.h>
 	<stdlib.h>
 
-1588896132 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\main.c
+1589583259 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"employee.h"
 
-1588894692 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\employee.h
+1589581490 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\employee.h
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"validaciones.h"
 
-1588895810 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\employee.c
+1589582903 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\employee.c
 	"employee.h"
 

@@ -107,3 +107,10 @@ void salaryEmployees(sEmployee[], int len);
 * \return int
 **/
 int printEmployees(sEmployee[], int tam);
+
+/** \brief print only one employee (must specify the index)
+ *
+ * \param employee sEmployee
+ * \return void
+ **/
+void printOneEmployee(sEmployee employee);

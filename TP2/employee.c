@@ -137,27 +137,35 @@ int findEmployeeById(sEmployee employee[],int len,int id)
 int printEmployees(sEmployee employee[], int tam)
 {
     int i;
+    printf("Nombre--------Apellido--------ID--------Salario--------Sector\n");
     for (i=0;i<tam;i++)
     {
         if(employee[i].isEmpty != LIBRE)
-        printf("Nombre:%s Apellido:%s\t ID:%d Salario:%.2f Sector:%d\n", employee[i].name, employee[i].lastName,
-                                                                employee[i].id, employee[i].salary,employee[i].sector);
+        printOneEmployee(employee[i]);
     }
     return 0;
+}
+
+void printOneEmployee(sEmployee employee)
+{
+    if(employee.isEmpty!=LIBRE)
+        printf("%8s  %9s  %10d \t %.2f  %8d\n", employee.name, employee.lastName, employee.id, employee.salary, employee.sector);
 }
 //--------------------------------------------------------INFORMES--------------------------------------------------------------------------
 
 int sortEmployees(sEmployee employee[],int len, int order)
-{   //1 DEBERÍA INDICAR UP (QUEDA DEFINIR QUE ES UP)
+{
+    int devPrintEmployee;
+    //1 ORDENAN UP
     if(order == 1)
     {
         sEmployee auxEmployee;
-        int i,p,j;
+        int p,j;
         for(p=0;p<len-1;p++)
         {
             for(j=p+1;j<len;j++)
             {
-                if(strcmp(employee[p].lastName,employee[j].lastName)<0)
+                if(stricmp(employee[p].lastName,employee[j].lastName)>0)
                 {
                     auxEmployee= employee[p];
                     employee[p] = employee[j];
@@ -165,28 +173,20 @@ int sortEmployees(sEmployee employee[],int len, int order)
                 }
             }
         }
-        for(i=0;i<len;i++)
-        {
-            if(employee[i].isEmpty != LIBRE )
-            {
-                printf("Apellido:%s Nombre:%s Sector:%d Salario:%.2f ID:%d \n", employee[i].lastName,
-                                                                            employee[i].name,
-                                                                            employee[i].sector,
-                                                                            employee[i].salary,
-                                                                            employee[i].id);
-            }
-        }
+       devPrintEmployee = printEmployees(employee,len);
+       if(devPrintEmployee == 0)
+            printf("Impresion ok...");
     }
-    // 0 DEBERÍA INDICAR DOWN (QUEDA DEFINIR QUE ES DOWN)
+    // 0 ORDENA DOWN
     else
     {
      sEmployee auxEmployee;
-        int i,p,j;
+        int p,j;
         for(p=0;p<len-1;p++)
         {
             for(j=p+1;j<len;j++)
             {
-                if(strcmp(employee[p].lastName,employee[j].lastName)>0)
+                if(stricmp(employee[p].lastName,employee[j].lastName)<0)
                 {
                     auxEmployee= employee[p];
                     employee[p] = employee[j];
@@ -194,17 +194,9 @@ int sortEmployees(sEmployee employee[],int len, int order)
                 }
             }
         }
-        for(i=0;i<len;i++)
-        {
-            if(employee[i].isEmpty != LIBRE )
-            {
-                printf("Apellido:%s Nombre:%s Sector:%d Salario:%.2f ID:%d \n", employee[i].lastName,
-                                                                            employee[i].name,
-                                                                            employee[i].sector,
-                                                                            employee[i].salary,
-                                                                            employee[i].id);
-            }
-        }
+        devPrintEmployee = printEmployees(employee,len);
+        if(devPrintEmployee == 0)
+            printf("Impresion ok...");
     }
     return 0;
 }
