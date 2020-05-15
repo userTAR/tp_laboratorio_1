@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1588720852 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\validaciones.c
+	"validaciones.h"
+
+1588720951 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+
+1588896132 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"employee.h"
+
+1588894692 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\employee.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"validaciones.h"
+
+1588895810 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp2\employee.c
+	"employee.h"
+
