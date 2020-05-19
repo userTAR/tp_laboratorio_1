@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1589891139 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\cliente-mascotas.c
+	"cliente-mascotas.h"
+
+1589891132 c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\cliente-mascotas.h
+	<stdio.h>
+	<stdlib.h>
+	"clientes.h"
+
+1589838124 c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	"mascota.h"
+
+1589838220 c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\validaciones biblioteca.h
+	<stdio.h>
+	<stdlib.h>
+
+1589834333 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\clientes.c
+	"clientes.h"
+
+1589891216 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ABM biblioteca.h"
+
+1589834063 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\validaciones biblioteca.c
+	"validaciones Biblioteca.h"
+
+1589279091 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\opmate biblioteca.c
+	"opMate Biblioteca.h"
+
+1586815800 c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\opmate biblioteca.h
+	<stdio.h>
+	<stdlib.h>
+
+1589765645 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\abm biblioteca.c
+	"ABM biblioteca.h"
+
+1589838221 c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\abm biblioteca.h
+	<stdio.h>
+	<stdlib.h>
+	"cliente-mascotas.h"
+
+1589892079 c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\mascota.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"validaciones Biblioteca.h"
+
+1589889672 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\mascota.c
+	"mascota.h"
+
