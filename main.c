@@ -34,17 +34,17 @@ void switchMenu(int opcion,sCliente estructura[],sMascota estructura2[],sRaza es
         break;
     case 2:
          printf("Listado Mascotas \n:");
-        imprimirArrayMascotas_OCUPADOS(estructura2,tamEstructura2);
+        imprimirArrayMascotas_OCUPADOS(estructura2,estructura3,tamEstructura2,tamEstructura3);
         break;
     case 3:
         printf("\nMascotas con sus duenios: \n");
-        listarDueniosConSusMascotas(estructura,estructura2,tamEstructura1,tamEstructura2);
+        listarDueniosConSusMascotas(estructura,estructura2,estructura3,tamEstructura1,tamEstructura2,tamEstructura3);
         break;
     case 4:
         agregarMascota(estructura,estructura2,estructura3,tamEstructura1,tamEstructura2,tamEstructura3);
         break;
     case 5:
-        eliminarMascota(estructura,estructura2,tamEstructura1,tamEstructura2);
+        eliminarMascota(estructura,estructura2,estructura3,tamEstructura1,tamEstructura2,tamEstructura3);
         break;
     case 6:
         modificarMascota(estructura2,estructura3,estructura,tamEstructura2,tamEstructura3,tamEstructura1);
@@ -56,7 +56,7 @@ void switchMenu(int opcion,sCliente estructura[],sMascota estructura2[],sRaza es
         eliminarClienteENCascada(estructura,estructura2,tamEstructura1,tamEstructura2);
         break;
     case 9:
-        ImprMascotasOrdenadasPorTipo_ConDuenio(estructura2,tamEstructura2);
+     //   ImprMascotasOrdenadasPorTipo_ConDuenio(estructura2,tamEstructura2);
         break;
     case 10:
         modificarCliente(estructura,tamEstructura1);
@@ -65,10 +65,10 @@ void switchMenu(int opcion,sCliente estructura[],sMascota estructura2[],sRaza es
         ImprclienteMasDeUnaMascota(estructura,estructura2,tamEstructura1,tamEstructura2);
         break;
     case 12:
-        ImprMascotasMasDe3Anios(estructura2,tamEstructura2);
+      //  ImprMascotasMasDe3Anios(estructura2,tamEstructura2);
         break;
     case 13:
-        imprMascotasPorTipoEnParticular(estructura2,tamEstructura2);
+      //  imprMascotasPorTipoEnParticular(estructura2,tamEstructura2);
         break;
     case 14:
         imprClientesOrdenadosPorCantMascotas(estructura,estructura2,tamEstructura1,tamEstructura2);
@@ -77,10 +77,10 @@ void switchMenu(int opcion,sCliente estructura[],sMascota estructura2[],sRaza es
         imprClientesOrdenadosPorCantMascotas_Nombre(estructura,estructura2,tamEstructura1,tamEstructura2);
         break;
     case 16:
-        promedioEdadMascotas(estructura2,tamEstructura2);
+       // promedioEdadMascotas(estructura2,tamEstructura2);
         break;
     case 17:
-        promedioEdadMascotasPorTipo(estructura2,tamEstructura2);
+      //  promedioEdadMascotasPorTipo(estructura2,tamEstructura2);
         break;
     case 18:
         promedioVarones_Mujeres(estructura,tamEstructura1);

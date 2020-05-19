@@ -18,7 +18,7 @@ typedef struct
 {
     char nombreMascota[21];
     char tipo[21];
-    sRaza raza;
+    int idraza;
     char sexo[21];
     char nombreDuenio[21];
     int idDuenio;
@@ -27,6 +27,9 @@ typedef struct
     int peso;
     int estado;
 }sMascota;
+
+int buscarLibreRaza(sRaza estructura[],int tamEstructura);
+void creadorDeIdRaza(sRaza estructura[],int tamEstructura);
 
 /** \brief Inicializa el estado de las mascotas en libre
  *
@@ -43,7 +46,7 @@ void inicializarEstadoMascota(sMascota estructura[],int tamEstructura);
  * \return void
  *
  */
-void imprimirUnaSolaMascota_OCUPADOS(sMascota estructura);
+void imprimirUnaSolaMascota_OCUPADOS(sMascota estructura,sRaza raza,int tamRaza);
 
 /** \brief Imprime todo el array de la estructura mascota
  *
@@ -52,7 +55,7 @@ void imprimirUnaSolaMascota_OCUPADOS(sMascota estructura);
  * \return void
  *
  */
-void imprimirArrayMascotas_OCUPADOS(sMascota estructura[],int tamEstructura);
+void imprimirArrayMascotas_OCUPADOS(sMascota estructura[],sRaza raza[],int tamEstructura,int tamRaza);
 
 /** \brief Se imprimen las mascotas, se ingresa un id y se devuelve el codigo de la mascota seleccionada
  *
@@ -61,7 +64,7 @@ void imprimirArrayMascotas_OCUPADOS(sMascota estructura[],int tamEstructura);
  * \return int
  *
  */
-int buscarIndiceDeMascotaPorId(sMascota estructura[],int tamEstructura);
+int buscarIndiceDeMascotaPorId(sMascota estructura[],sRaza raza[],int tamEstructura,int tamRaza);
 
 /** \brief Busca la primer mascota con el estado libre dentro del array de estructura mascota y devuelve el indice
  *
@@ -71,6 +74,7 @@ int buscarIndiceDeMascotaPorId(sMascota estructura[],int tamEstructura);
  *
  */
 int buscarLibreMascota(sMascota estructura[],int tamEstructura);
+
 
 /** \brief Crea, para toda la longitud del array de mascota, un id y se lo asigna al miembro id
  *

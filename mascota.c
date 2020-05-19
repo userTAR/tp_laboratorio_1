@@ -2,6 +2,28 @@
 #define LIBRE 0
 #define OCUPADO 1
 
+void creadorDeIdRaza(sRaza estructura[],int tamEstructura)
+{
+    int i;
+    int j=3;
+    for(i=0;i<tamEstructura;i++)
+    {
+        estructura[i].IdRaza = j;
+       j = j + 10;
+    }
+}
+
+int buscarLibreRaza(sRaza estructura[],int tamEstructura)
+{
+    int i;
+    for (i=0;i<tamEstructura;i++)
+    {
+        if(estructura[i].estado == LIBRE)
+            return i; //retorna el primer indice libre de la estructura
+    }
+    return -1; //devuelve -1 si no encontró espacio
+}
+
 void inicializarEstadoMascota(sMascota estructura[],int tamEstructura)
 {
     int i;
@@ -9,30 +31,37 @@ void inicializarEstadoMascota(sMascota estructura[],int tamEstructura)
         estructura[i].estado = LIBRE;
 }
 
-void imprimirArrayMascotas_OCUPADOS(sMascota estructura[],int tamEstructura) //cambiarle el tipo de estructura
+void imprimirArrayMascotas_OCUPADOS(sMascota estructura[],sRaza raza[],int tamEstructura,int tamRaza) //cambiarle el tipo de estructura
 {
-    int i;
+    int i,j;
     printf ("NombreMascota---------TipoMascota:------------RazaMascota:-------- SexoMascota:----- EdadMascota:---- PesoMascota:-----IdMascota:----NombreDuenio:---\n");
     for(i=0;i<tamEstructura;i++)
     {
-       imprimirUnaSolaMascota_OCUPADOS(estructura[i]);
+        for(j=0;j<tamRaza;j++)
+        {
+            if(estructura[i].idraza == raza[j].IdRaza)
+                imprimirUnaSolaMascota_OCUPADOS(estructura[i],raza[j],tamRaza);
+        }
     }
+
 }
 
-void imprimirUnaSolaMascota_OCUPADOS(sMascota estructura) //cambiarle el tipo de estructura
+void imprimirUnaSolaMascota_OCUPADOS(sMascota estructura,sRaza raza,int tamRaza) //cambiarle el tipo de estructura
 {
+
     if(estructura.estado != LIBRE)
     {
-        printf("%8s %20s %25s %12s   %20s   %15d   %16d  %10d  %18s \n", estructura.nombreMascota,estructura.tipo,estructura.raza.NombreRaza,estructura.raza.paisRaza,estructura.sexo,
+                printf("%8s %20s %25s %12s   %20s   %15d   %16d  %10d  %18s \n", estructura.nombreMascota,estructura.tipo,raza.NombreRaza,raza.paisRaza,estructura.sexo,
                         estructura.edad,estructura.peso,estructura.idMascota,estructura.nombreDuenio); //completar printf
+
     }
 }
 
-int buscarIndiceDeMascotaPorId(sMascota estructura[],int tamEstructura)
+int buscarIndiceDeMascotaPorId(sMascota estructura[],sRaza raza[],int tamEstructura,int tamRaza)
 {
     int eleccionID;
     int i;
-    imprimirArrayMascotas_OCUPADOS(estructura,tamEstructura);
+    imprimirArrayMascotas_OCUPADOS(estructura,raza,tamEstructura,tamRaza);
     eleccionID = obtenerNumero("Ingrese un id");
     for(i=0;i<tamEstructura;i++)
     {
@@ -65,7 +94,7 @@ void creadorDeIdMascota(sMascota estructura[],int tamEstructura)
 }
 
 
-
+/*
 void ImprMascotasOrdenadasPorTipo_ConDuenio(sMascota estructura[],int tamEstructura)
 {
     int i,j;
@@ -188,5 +217,5 @@ void promedioEdadMascotasPorTipo(sMascota estructura[], int tamEstructura)
     printf("El promedio de edad de:\nGATOS: %.2f \nPERROS: %.2f\nRAROS: %.2f", promedio[0],promedio[1],promedio[2]);
 }
 
-
+*/
 

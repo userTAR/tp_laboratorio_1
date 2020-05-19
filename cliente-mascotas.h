@@ -25,7 +25,7 @@ void hardcodearEstructuras(sCliente cliente[],sMascota mascota[],sRaza raza[],in
  * \return void
  *
  */
-void listarDueniosConSusMascotas(sCliente estructura1[],sMascota estructura2[],int tamEstructura1,int tamEstructura2);
+void listarDueniosConSusMascotas(sCliente cliente[],sMascota mascota[],sRaza raza[],int tamEstructura1,int tamEstructura2,int tamEstructura3);
 
 /** \brief Se agrega una nueva mascota, ingresando todos los datos en los campos correspondientes
  *
@@ -56,7 +56,7 @@ void modificarMascota(sMascota estructura[],sRaza estructura2[],sCliente estruct
  * \return void
  *
  */
-void eliminarMascota(sCliente estructura[],sMascota estructura2[],int tamEstructura,int tamEstructura2);
+void eliminarMascota(sCliente estructura[],sMascota estructura2[],sRaza raza[],int tamEstructura,int tamEstructura2,int tamRaza);
 
 /** \brief Se elimina logicamente a un cliente elegido por id y a todas las mascotas asociadas a ese cliente elegido
  *

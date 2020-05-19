@@ -18,9 +18,6 @@ void hardcodearEstructuras(sCliente cliente[],sMascota mascota[],sRaza raza[],in
     //char string6[5][20] = {"Balvanera","Villa Caraza","Lanus","Constitucion","Palermo"};    //lugar
     char sexoMascota[11][20]={"FEMENINO","FEMENINO","MASCULINO","MASCULINO","MASCULINO","MASCULINO","MASCULINO","MASCULINO","MASCULINO","MASCULINO","MASCULINO"};  //sexo(1=masc'M' 2=fem 'F')
     char tipoMascota[11][10]={"GATO","GATO","PERRO","PERRO","GATO","PERRO","RARO","PERRO","GATO","GATO","PERRO"};  //un telefono/TIPO/MOTIVO o algo asi
-    char NombreRazaMascota[11][20] = {"Bengala","British","Bull","Pitbull","Bengala","Pitbull","Camaleon","Bull","Bengala","British","Bull"};    //apellido u otra cosa
-    char PaisRazaMascota[11][20] = {"Argentina","Inglaterra","Espania","Italia","Argentina","Italia","China","Espania","Argentina","Inglaterra","Espania"};    //apellido u otra cosa
-    int tipoRaza[11]={2,2,1,1,2,1,3,1,2,2,1}; //una edad
     int idRazaMascota[11]={3,13,23,33,3,33,43,23,3,13,23}; //una edad
     int edadMascota[11]={1,3,5,7,4,5,11,4,2,3,4}; //una edad
     int pesoMascota[11]={25,63,45,8,6,8,4,1,5,22,31};
@@ -55,14 +52,11 @@ void hardcodearEstructuras(sCliente cliente[],sMascota mascota[],sRaza raza[],in
   for(i=0;i<tamEstructura2;i++)
   {
       strcpy(mascota[i].nombreMascota, nombreMascota[i]);
-      strcpy(mascota[i].raza.NombreRaza, NombreRazaMascota[i]);
-      strcpy(mascota[i].raza.paisRaza, PaisRazaMascota[i]);
       strcpy(mascota[i].sexo, sexoMascota[i]);
       strcpy(mascota[i].tipo, tipoMascota[i]);
       strcpy(mascota[i].nombreDuenio, nombreDuenio[i]);
 
-      mascota[i].raza.tipoRaza= tipoRaza[i];
-      mascota[i].raza.IdRaza= idRazaMascota[i];
+      mascota[i].idraza = idRazaMascota[i];
       mascota[i].edad = edadMascota[i];
       mascota[i].peso = pesoMascota[i];
       mascota[i].idMascota = idMascota[i];
@@ -81,9 +75,9 @@ void hardcodearEstructuras(sCliente cliente[],sMascota mascota[],sRaza raza[],in
 
 
 
-void listarDueniosConSusMascotas(sCliente cliente[],sMascota mascota[],int tamEstructura1,int tamEstructura2)
+void listarDueniosConSusMascotas(sCliente cliente[],sMascota mascota[],sRaza raza[],int tamEstructura1,int tamEstructura2,int tamEstructura3)
 {
-    int i,j;
+    int i,j,p;
     for(i=0;i<5;i++)
     {
         printf("Las mascotas del cliente: \n");
@@ -91,9 +85,10 @@ void listarDueniosConSusMascotas(sCliente cliente[],sMascota mascota[],int tamEs
         printf ("NombreMascota---------TipoMascota:------------RazaMascota:-------- SexoMascota:----- EdadMascota:---- PesoMascota:-----IdMascota:----IdDuenio:---\n");
         for(j=0;j<11;j++)
         {
-            if(cliente[i].idPersonal == mascota[j].idDuenio && cliente[i].estado != 0)
+            for(p=0;p<tamEstructura3;p++)
+            if(cliente[i].idPersonal == mascota[j].idDuenio && cliente[i].estado != 0 && mascota[j].idraza == raza[p].IdRaza)
             {
-               imprimirUnaSolaMascota_OCUPADOS(mascota[j]);
+               imprimirUnaSolaMascota_OCUPADOS(mascota[j],raza[p],tamEstructura3);
             }
         }
     }
@@ -105,6 +100,7 @@ void agregarMascota(sCliente cliente[],sMascota estructura[],sRaza estructura2[]
 {
     int i,j;
     int indice;
+    int indiceRaza;
     int tipo;
     int sexo;
     int peso;
@@ -133,12 +129,14 @@ void agregarMascota(sCliente cliente[],sMascota estructura[],sRaza estructura2[]
     num = obtenerNumero("1.SI,RAZA NUEVA//2.NO,RAZA PREDETERMINADA\n DESEA INGRESAR UNA RAZA NUEVA O UNA PREDETERMINADA? \n");
     if(num==1)
     {
-    obtenerCadena("Ingrese el nombre de la raza",estructura[indice].raza.NombreRaza);
-    obtenerCadena("Ingrese el pais de la raza",estructura[indice].raza.paisRaza);
+    indiceRaza = buscarLibreRaza(estructura2,tamEstructura2);
+    obtenerCadena("Ingrese el nombre de la raza",estructura2[indiceRaza].NombreRaza);
+    obtenerCadena("Ingrese el pais de la raza",estructura2[indiceRaza].paisRaza);
+    estructura[indice].idraza = estructura2[indiceRaza].IdRaza;
     }
     else
     {
-        for(i=0;i<6;i++)
+        for(i=0;i<tamEstructura2;i++)
         {
             if(estructura2[i].tipoRaza == tipo && estructura2[i].estado!=0)
             {
@@ -150,10 +148,7 @@ void agregarMascota(sCliente cliente[],sMascota estructura[],sRaza estructura2[]
         {
            if(estructura2[j].IdRaza == idRaza)
             {
-                strcpy(estructura[indice].raza.NombreRaza,estructura2[j].NombreRaza);
-                strcpy(estructura[indice].raza.paisRaza,estructura2[j].paisRaza);
-                estructura[indice].raza.tipoRaza = estructura2[j].tipoRaza;
-
+                estructura[indice].idraza = estructura2[j].IdRaza;
             }
         }
     }
@@ -193,7 +188,7 @@ void modificarMascota(sMascota estructura[],sRaza estructura2[],sCliente estruct
     int eleccionModificacion;
     int nuevoNumero;
     char nuevaCadena[51];
-    imprimirArrayMascotas_OCUPADOS(estructura,tamEstructura);
+    imprimirArrayMascotas_OCUPADOS(estructura,estructura2,tamEstructura,tamEstructura2);
     eleccionID = obtenerNumero("Ingrese el id de la mascota"); // agregar mensaje
     printf("1.Modificar nombre\n2.Modificar tipo\n3.Modificar raza\n4.Modificar sexo\n5.Modificar edad\n"); //se ingresan las opciones
     printf("6.Modificar peso\n7.Modificar Duenio\n"); //se ingresan las opciones
@@ -234,10 +229,7 @@ void modificarMascota(sMascota estructura[],sRaza estructura2[],sCliente estruct
             {
                 if(estructura2[j].IdRaza == nuevoNumero && estructura[i].idMascota == eleccionID)
                 {
-                    strcpy(estructura[i].raza.NombreRaza,estructura2[j].NombreRaza);
-                    strcpy(estructura[i].raza.paisRaza,estructura2[j].paisRaza);
-                    estructura[i].raza.tipoRaza = estructura2[j].tipoRaza;
-
+                    estructura[i].idraza = estructura2[j].IdRaza;
                 }
             }
         }
@@ -278,21 +270,19 @@ void modificarMascota(sMascota estructura[],sRaza estructura2[],sCliente estruct
         nuevoNumero = obtenerNumero("Ingrese el id del nuevo cliente de la mascota");
         for(i=0;i<tamEstructura;i++)
         {
-            if(estructura[i].idMascota == eleccionID)
+            if(estructura[i].idMascota == eleccionID )
                 estructura[i].idDuenio = nuevoNumero;
         }
-        for(i=0;i<tamEstructura3;i++)
-        {
-            if(estruc)
-        }
+        //for(i=0;i<tamEstructura3;)
+
     }
 }
 
-void eliminarMascota(sCliente estructura[],sMascota estructura2[],int tamEstructura,int tamEstructura2) //cambiarle el tipo de estructura
+void eliminarMascota(sCliente estructura[],sMascota estructura2[],sRaza raza[],int tamEstructura,int tamEstructura2,int tamRaza) //cambiarle el tipo de estructura
 {
    int indice;
    int i;
-   indice = buscarIndiceDeMascotaPorId(estructura2,tamEstructura2);
+   indice = buscarIndiceDeMascotaPorId(estructura2,raza,tamEstructura2,tamRaza);
    estructura2[indice].estado = LIBRE;
    for(i=0;i<tamEstructura;i++)
     {
