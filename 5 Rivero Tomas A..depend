@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1589891139 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\cliente-mascotas.c
+1589893882 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\cliente-mascotas.c
 	"cliente-mascotas.h"
 
-1589891132 c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\cliente-mascotas.h
+1589893926 c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\cliente-mascotas.h
 	<stdio.h>
 	<stdlib.h>
 	"clientes.h"
@@ -19,7 +19,7 @@
 1589834333 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\clientes.c
 	"clientes.h"
 
-1589891216 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\main.c
+1589893950 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ABM biblioteca.h"
@@ -42,12 +42,12 @@
 	<stdlib.h>
 	"cliente-mascotas.h"
 
-1589892079 c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\mascota.h
+1589893930 c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\mascota.h
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"validaciones Biblioteca.h"
 
-1589889672 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\mascota.c
+1589893885 source:c:\users\familia rivero\desktop\parcial\parcial lab1 12-5 rivero tomas a\mascota.c
 	"mascota.h"
 

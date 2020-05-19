@@ -47,7 +47,7 @@ void switchMenu(int opcion,sCliente estructura[],sMascota estructura2[],sRaza es
         eliminarMascota(estructura,estructura2,tamEstructura1,tamEstructura2);
         break;
     case 6:
-        modificarMascota(estructura2,tamEstructura2);
+        modificarMascota(estructura2,estructura3,estructura,tamEstructura2,tamEstructura3,tamEstructura1);
         break;
     case 7:
         agregarCliente(estructura,tamEstructura1);

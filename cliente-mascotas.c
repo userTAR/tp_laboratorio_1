@@ -29,12 +29,13 @@ void hardcodearEstructuras(sCliente cliente[],sMascota mascota[],sRaza raza[],in
     char nombreDuenio[11][20] = {"Stella","Stella","Pablo","Pablo","Pablo","Lucia","Lucia","Tomas","Esteban","Esteban","Esteban"}; //nombre
     int estadoMascota[11]={1,1,1,1,1,1,1,1,1,1,1};    //un estado
 
-
     char razas[6][20] = {"Bengala","British","Bull","Pitbull","Camaleon","Anolis"};    //apellido u otra cosa
     char PaisRaza[6][20] = {"Argentina","Inglaterra","Espania","Italia","China","Japon"};    //apellido u otra cosa
     int razatipo[6]={2,2,1,1,3,3}; //una edad
     int idRaza[6]={3,13,23,33,43,53};
     int estadoRaza[6]={1,1,1,1,1,1};
+
+
   int i;
 
   for(i=0; i<tamEstructura1;i++) //cliente
@@ -51,7 +52,7 @@ void hardcodearEstructuras(sCliente cliente[],sMascota mascota[],sRaza raza[],in
       cliente[i].estado = estadoCliente[i];
   }
 
-  for(i=0; i<tamEstructura2;i++)
+  for(i=0;i<tamEstructura2;i++)
   {
       strcpy(mascota[i].nombreMascota, nombreMascota[i]);
       strcpy(mascota[i].raza.NombreRaza, NombreRazaMascota[i]);
@@ -110,6 +111,7 @@ void agregarMascota(sCliente cliente[],sMascota estructura[],sRaza estructura2[]
     int edad;
     int idDuenio;
     int idRaza;
+    int num;
     imprimirArrayClientes_OCUPADOS(cliente,tamCliente);
     idDuenio=obtenerNumero("\nIngrese el id del cliente al que pertenece el perro");
     indice = buscarLibreMascota(estructura,tamMascota);
@@ -120,48 +122,22 @@ void agregarMascota(sCliente cliente[],sMascota estructura[],sRaza estructura2[]
     {
     case 1:
         strcpy(estructura[indice].tipo, "PERRO");
-        for(i=0;i<6;i++)
-        {
-            if(estructura2[i].tipoRaza == tipo && estructura2[i].estado!=0)
-            {
-                printf("Raza:%8s PaisRaza: %8s Id:Raza:%5d \n",estructura2[i].NombreRaza,estructura2[i].paisRaza,estructura2[i].IdRaza);
-            }
-        }
-        idRaza= obtenerNumero("Ingrese el ID de la raza que quiera:");
-        for(j=0;j<tamEstructura2;j++)
-        {
-           if(estructura2[j].IdRaza == idRaza)
-            {
-                strcpy(estructura[indice].raza.NombreRaza,estructura2[j].NombreRaza);
-                strcpy(estructura[indice].raza.paisRaza,estructura2[j].paisRaza);
-                estructura[indice].raza.tipoRaza = estructura2[j].tipoRaza;
-
-            }
-        }
         break;
     case 2:
         strcpy(estructura[indice].tipo, "GATO");
-        for(i=0;i<6;i++)
-        {
-            if(estructura2[i].tipoRaza == tipo && estructura2[i].estado!=0)
-            {
-                printf("Raza:%8s PaisRaza: %8s Id:Raza:%5d \n",estructura2[i].NombreRaza,estructura2[i].paisRaza,estructura2[i].IdRaza);
-            }
-        }
-        idRaza= obtenerNumero("Ingrese el ID de la raza que quiera:");
-        for(j=0;j<tamMascota;j++)
-        {
-           if(estructura2[j].IdRaza == idRaza)
-            {
-                strcpy(estructura[indice].raza.NombreRaza,estructura2[j].NombreRaza);
-                strcpy(estructura[indice].raza.paisRaza,estructura2[j].paisRaza);
-                estructura[indice].raza.tipoRaza = estructura2[j].tipoRaza;
-
-            }
-        }
         break;
     case 3:
         strcpy(estructura[indice].tipo, "RARO");
+        break;
+    }
+    num = obtenerNumero("1.SI,RAZA NUEVA//2.NO,RAZA PREDETERMINADA\n DESEA INGRESAR UNA RAZA NUEVA O UNA PREDETERMINADA? \n");
+    if(num==1)
+    {
+    obtenerCadena("Ingrese el nombre de la raza",estructura[indice].raza.NombreRaza);
+    obtenerCadena("Ingrese el pais de la raza",estructura[indice].raza.paisRaza);
+    }
+    else
+    {
         for(i=0;i<6;i++)
         {
             if(estructura2[i].tipoRaza == tipo && estructura2[i].estado!=0)
@@ -180,7 +156,6 @@ void agregarMascota(sCliente cliente[],sMascota estructura[],sRaza estructura2[]
 
             }
         }
-        break;
     }
     //obtenerCadena("Ingrese la raza del animal",estructura[indice].raza);
     sexo = obtenerNumero("1.Masculino\n2.Femenino\nIngrese el sexo");
@@ -209,6 +184,108 @@ void agregarMascota(sCliente cliente[],sMascota estructura[],sRaza estructura2[]
 
     }
     estructura[indice].estado = OCUPADO;
+}
+
+void modificarMascota(sMascota estructura[],sRaza estructura2[],sCliente estructura3[],int tamEstructura, int tamEstructura2,int tamEstructura3) //cambiarle el tipo de estructura
+{
+    int i,j;
+    int eleccionID;
+    int eleccionModificacion;
+    int nuevoNumero;
+    char nuevaCadena[51];
+    imprimirArrayMascotas_OCUPADOS(estructura,tamEstructura);
+    eleccionID = obtenerNumero("Ingrese el id de la mascota"); // agregar mensaje
+    printf("1.Modificar nombre\n2.Modificar tipo\n3.Modificar raza\n4.Modificar sexo\n5.Modificar edad\n"); //se ingresan las opciones
+    printf("6.Modificar peso\n7.Modificar Duenio\n"); //se ingresan las opciones
+    eleccionModificacion = obtenerNumero("Ingrese la opcion que desee: ");
+    eleccionModificacion = validacionDeNumero(eleccionModificacion,1,7);
+    switch(eleccionModificacion)
+    {
+    case 1:
+        obtenerCadena("Ingrese nuevo nombre",nuevaCadena);
+        for(i=0;i<tamEstructura;i++)
+        {
+            if(estructura[i].idMascota== eleccionID) //completar condicion
+                  strcpy(estructura[i].nombreMascota,nuevaCadena);        //completar igualdad
+        }
+        break;
+    case 2:
+        nuevoNumero = obtenerNumero("1.Perro//2.Gato//3.Raro");
+        nuevoNumero = validacionDeNumero(nuevoNumero,1,3);
+        for(i=0;i<tamEstructura;i++)
+        {
+            if(estructura[i].idMascota == eleccionID && nuevoNumero == 1) //completar condicion
+                strcpy(estructura[i].tipo,"PERRO");
+            else if(estructura[i].idMascota == eleccionID && nuevoNumero == 2)
+                strcpy(estructura[i].tipo,"GATO");
+            else if(estructura[i].idMascota == eleccionID && nuevoNumero == 3)
+                strcpy(estructura[i].tipo,"RARO");
+        }
+        break;
+    case 3:
+        for(i=0;i<tamEstructura2;i++)
+        {
+             printf("Raza:%8s PaisRaza: %8s Id:Raza:%5d \n",estructura2[i].NombreRaza,estructura2[i].paisRaza,estructura2[i].IdRaza);
+        }
+        nuevoNumero = obtenerNumero("Ingrese el ID deseado");
+        for(i=0;i<tamEstructura;i++)
+        {
+            for(j=0;j<tamEstructura2;j++)
+            {
+                if(estructura2[j].IdRaza == nuevoNumero && estructura[i].idMascota == eleccionID)
+                {
+                    strcpy(estructura[i].raza.NombreRaza,estructura2[j].NombreRaza);
+                    strcpy(estructura[i].raza.paisRaza,estructura2[j].paisRaza);
+                    estructura[i].raza.tipoRaza = estructura2[j].tipoRaza;
+
+                }
+            }
+        }
+        break;
+
+    case 4:
+        nuevoNumero = obtenerNumero("1.Masculino//2.Femenino\nIngrese el sexo");
+        nuevoNumero = validacionDeNumero(nuevoNumero,1,2);
+        for(i=0;i<tamEstructura;i++)
+        {
+            if(estructura[i].idMascota == eleccionID && nuevoNumero == 1) //completar condicion
+                strcpy(estructura[i].sexo,"MASCULINO");
+            else if(estructura[i].idMascota == eleccionID && nuevoNumero == 2)
+                strcpy(estructura[i].sexo,"FEMENINO");
+        }
+        break;
+
+    case 5:
+        nuevoNumero = obtenerNumero("Ingrese la nueva edad");
+        validacionDeNumero(nuevoNumero,1,30);
+        for(i=0;i<tamEstructura;i++)
+        {
+            if(estructura[i].idMascota == eleccionID)    //completar condicion
+               estructura[i].edad= nuevoNumero;    //completar igualdad
+        }
+        break;
+    case 6:
+        nuevoNumero = obtenerNumero("Ingrese el nuevo peso");
+        validacionDeNumero(nuevoNumero,0,100);
+        for(i=0;i<tamEstructura;i++)
+        {
+            if(estructura[i].idMascota == eleccionID)    //completar condicion
+               estructura[i].peso = nuevoNumero;    //completar igualdad
+        }
+        break;
+    case 7:
+        imprimirArrayClientes_OCUPADOS(estructura3,tamEstructura3);
+        nuevoNumero = obtenerNumero("Ingrese el id del nuevo cliente de la mascota");
+        for(i=0;i<tamEstructura;i++)
+        {
+            if(estructura[i].idMascota == eleccionID)
+                estructura[i].idDuenio = nuevoNumero;
+        }
+        for(i=0;i<tamEstructura3;i++)
+        {
+            if(estruc)
+        }
+    }
 }
 
 void eliminarMascota(sCliente estructura[],sMascota estructura2[],int tamEstructura,int tamEstructura2) //cambiarle el tipo de estructura

@@ -38,6 +38,15 @@ void listarDueniosConSusMascotas(sCliente estructura1[],sMascota estructura2[],i
  */
 void agregarMascota(sCliente cliente[],sMascota estructura[],sRaza estructura2[],int tamCliente,int tamMascota,int tamEstructura2);
 
+/** \brief Se elije la mascota a modificar por el id y que es lo que se quiere modificar de los miembros de la estructura
+ *
+ * \param estructura[] sMascota
+ * \param tamEstructura int
+ * \return void
+ *
+ */
+void modificarMascota(sMascota estructura[],sRaza estructura2[],sCliente estructura3[],int tamEstructura,int tamEstructura2,int tamEstructura3);
+
 /** \brief Se elimina logicamente a una mascota (su estado pasa a ser libre y puede ser reescrita bajo el mismo id)
  *
  * \param estructura[] sCliente

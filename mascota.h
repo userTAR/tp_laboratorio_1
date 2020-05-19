@@ -81,14 +81,7 @@ int buscarLibreMascota(sMascota estructura[],int tamEstructura);
  */
 void creadorDeIdMascota(sMascota estructura[],int tamEstructura);
 
-/** \brief Se elije la mascota a modificar por el id y que es lo que se quiere modificar de los miembros de la estructura
- *
- * \param estructura[] sMascota
- * \param tamEstructura int
- * \return void
- *
- */
-void modificarMascota(sMascota estructura[],int tamEstructura);
+
 
 /** \brief Se ordenan las mascotas por tipo y se imprimen junto al nombre de su dueño
  *
