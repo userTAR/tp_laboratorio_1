@@ -52,6 +52,7 @@ char validacionDeLetra(char letra, char maximo, char minimo)
 
 int obtenerNumero(char mensaje[])
 {
+
     int numero;
     printf("%s: ", mensaje);
     scanf("%d", &numero);
@@ -78,8 +79,8 @@ int obtenerCadena(char mensaje[],char cadena[])
 
      for(i=0;i<30;i++)
         {
-            if(string[i]== '0'||string[i]== '1'||string[i]== '2'||string[i]== '3'||string[i]== '4'||string[i]== '5'||string[i]== '6'
-               ||string[i]== '7'||string[i]== '8'||string[i]== '9')
+            if((string[i]== '0'||string[i]== '1'||string[i]== '2'||string[i]== '3'||string[i]== '4'||string[i]== '5'||string[i]== '6'
+               ||string[i]== '7'||string[i]== '8'||string[i]== '9')&& string[i]!= '\n')
             {
                 printf("EL NOMBRE CONTIENE NUMEROS\n");
                 return 0;
