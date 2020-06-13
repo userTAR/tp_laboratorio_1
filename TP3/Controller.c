@@ -18,6 +18,7 @@ int controller_setId(LinkedList* pArrayListEmployee)
     int mayor;
     int idObtenido;
 
+
     size = ll_len(pArrayListEmployee);
     if(size == 0)
     {
@@ -112,8 +113,11 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
         {
             devCadena = obtenerCadena("INGRESE EL NOMBRE", nombre);
         }while(devCadena==0);
+
         horasTrabajadas = obtenerNumero("INGRESE LA CANTIDAD DE HORAS TRABAJADAS DEL EMPLEADO");
+        horasTrabajadas = validacionDeNumero(horasTrabajadas,0,1000000);
         sueldo = obtenerNumero("INGRESE EL SUELDO DEL EMPLEADO");
+        sueldo = validacionDeNumero(sueldo,0,8000000);
         id = controller_setId(pArrayListEmployee);
         employee_setNombre(pEmployee,nombre);
         employee_setHorasTrabajadas(pEmployee,horasTrabajadas);
