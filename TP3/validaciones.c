@@ -1,5 +1,6 @@
 #include "validaciones.h"
 #include "string.h"
+#include <ctype.h>
 
 int isInteger(float A)
 {
@@ -23,13 +24,15 @@ int validacionDeNumero(int numero,int minimo, int maximo)
     while(minimo>numero||numero>maximo)
     {
         //Si está fuera de rango lo reingreso hasta que este dentro del rango;
-        printf("Numero fuera de rango, Ingreselo nuevamente: ");
+        printf("NUMERO FUERA DE RANGO, INGRESELO NUEVAMENTE: ");
         scanf("%d",&i);
         numero = i;
     }
     //si el numero esta dentro del rango devuelvo el numero;
     return i;
 }
+
+
 
 char validacionDeLetra(char letra, char maximo, char minimo)
 {
@@ -52,9 +55,9 @@ char validacionDeLetra(char letra, char maximo, char minimo)
 
 int obtenerNumero(char mensaje[])
 {
-
     int numero;
     printf("%s: ", mensaje);
+    fflush(stdin);
     scanf("%d", &numero);
     return numero;
 }
@@ -76,11 +79,11 @@ int obtenerCadena(char mensaje[],char cadena[])
     fflush(stdin);
     fgets(string,30,stdin);
     strtok(string,"\n");
-
+    fflush(stdin);
      for(i=0;i<30;i++)
         {
             if((string[i]== '0'||string[i]== '1'||string[i]== '2'||string[i]== '3'||string[i]== '4'||string[i]== '5'||string[i]== '6'
-               ||string[i]== '7'||string[i]== '8'||string[i]== '9')&& string[i]!= '\n')
+               ||string[i]== '7'||string[i]== '8'||string[i]== '9') && string[i]!= '\n')
             {
                 printf("EL NOMBRE CONTIENE NUMEROS\n");
                 return 0;

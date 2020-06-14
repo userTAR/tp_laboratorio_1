@@ -100,7 +100,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     int horasTrabajadas;
     int sueldo;
     int id;
-    int devCadena;
+    int dev;
 
     pEmployee = (Employee*)employee_new();
     if(pEmployee == NULL)
@@ -111,13 +111,12 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     {
         do
         {
-            devCadena = obtenerCadena("INGRESE EL NOMBRE", nombre);
-        }while(devCadena==0);
-
+            dev = obtenerCadena("INGRESE EL NOMBRE", nombre);
+        }while(dev==0);
         horasTrabajadas = obtenerNumero("INGRESE LA CANTIDAD DE HORAS TRABAJADAS DEL EMPLEADO");
-        horasTrabajadas = validacionDeNumero(horasTrabajadas,0,1000000);
+        horasTrabajadas = validacionDeNumero(horasTrabajadas,1,1000000);
         sueldo = obtenerNumero("INGRESE EL SUELDO DEL EMPLEADO");
-        sueldo = validacionDeNumero(sueldo,0,8000000);
+        sueldo = validacionDeNumero(sueldo,1,8000000);
         id = controller_setId(pArrayListEmployee);
         employee_setNombre(pEmployee,nombre);
         employee_setHorasTrabajadas(pEmployee,horasTrabajadas);
@@ -167,7 +166,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
         if(index == -1)
         {
             printf("EL ID INGRESADO NO EXISTE\n");
-            id = obtenerNumero("\nREINGRESE EL ID DEL EMPLEADO QUE QUIERA MODIFICAR");
+            index = -1;
         }
         else
             break;
