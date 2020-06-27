@@ -36,6 +36,52 @@ int controller_setId(LinkedList* pArrayListJuegos)
     }
     return (mayor+1);
 }
+
+void controller_cargaActivos(LinkedList* pArrayListJuegos)
+{
+    int control;
+    control = controller_loadFromText("juegos_activos.csv", pArrayListJuegos);
+    if(control == 1)
+    {
+        printf("CARGA DE ARCHIVO PRINCIPAL DE JUEGOS ACTIVOS: OK...");
+    }
+    else
+    {
+        printf("ERROR EN LA CARGA DEL ARCHIVO PRINCIPAL DE JUEGOS ACTIVOS,SE INTETARA ABRIR EL BACKUP\n");
+        control = controller_loadFromBinary("juegos_activos_back.bin",pArrayListJuegos);
+        if(control == 1)
+        {
+            printf("CARGA DE DESDE BACKUP: OK...");
+        }
+        else
+        {
+            printf("ERROR EN LA CARGA DEL ARCHIVO BACKUP DE JUEGOS ACTIVOS\n\n");
+        }
+    }
+}
+
+void controller_cargaEliminados(LinkedList* pArrayListJuegos)
+{
+    int control;
+    control = controller_loadFromText("juegos_eliminados.csv", pArrayListJuegos);
+    if(control == 1)
+    {
+        printf("CARGA DE ARCHIVO DE JUEGOS ELIMINADOS: OK...");
+    }
+    else
+    {
+        printf("ERROR EN LA CARGA DEL ARCHIVO PRINCIPAL DE JUEGOS ELIMINADOS,SE INTETARA ABRIR EL BACKUP\n");
+        control = controller_loadFromBinary("juegos_eliminados_back.bin",pArrayListJuegos);
+        if(control == 1)
+        {
+            printf("CARGA DESDE BACKUP: OK...");
+        }
+        else
+        {
+            printf("ERROR EN LA CARGA DEL ARCHIVO BACKUP DE JUEGOS ELIMINADOS\n\n");
+        }
+    }
+}
 /*
 Este archivo es el encargado de abrir el file y luego se llama a la funcion
 parser text para guardar los datos en un empleado y luego en la linkedlist
@@ -131,18 +177,38 @@ int controller_addGame(LinkedList* pArrayListJuegos)
     return 1;
 }
 
-int controller_getIndexById(LinkedList* pArrayListEmployee,int idBuscado)
+int controller_sellGame(LinkedList*pArrayListJuegos)
 {
-    Employee* employee;
+    int idBuscado;
+    int returnAux = -1;
+    int stock;
+    sJuego* pJuego;
+    if(pArrayListJuegos != NULL)
+    {
+        returnAux = 0;
+        controller_ListGame(pArrayListJuegos);
+        idBuscado = obtenerNumero("INGRESE EL ID DEL JUEGO QUE QUIERE VENDER");
+        controller_getIndexById(pArrayListJuegos,idBuscado);
+        pJuego = (sJuego*)ll_get(pArrayListJuegos,idBuscado);
+        videojuego_getStock(pJuego,&stock);
+        stock--;
+        videojuego_setStock(pJuego,stock);
+    }
+    return returnAux;
+}
+
+int controller_getIndexById(LinkedList* pArrayListJuegos,int idBuscado)
+{
+    sJuego* pJuego;
     int size;
     int i;
     int idObtenido;
 
-    size = ll_len(pArrayListEmployee);
+    size = ll_len(pArrayListJuegos);
     for(i=0;i<size;i++)
     {
-        employee = ll_get(pArrayListEmployee,i);
-        employee_getId(employee,&idObtenido);
+        pJuego = ll_get(pArrayListJuegos,i);
+        videojuego_getId(pJuego,&idObtenido);
         if(idObtenido == idBuscado)
         {
             return i;
@@ -152,9 +218,9 @@ int controller_getIndexById(LinkedList* pArrayListEmployee,int idBuscado)
     return -1;
 }
 
-int controller_editEmployee(LinkedList* pArrayListEmployee)
+int controller_editGame(LinkedList* pArrayListJuegos)
 {
-    Employee* pEmployee;
+    sJuego* pJuego;
     int id;
     int index = -1;
     int keepEditting = 1;
@@ -162,11 +228,11 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     int nuevoNumero;
     char nuevaCadena[21];
 
-    controller_ListEmployee(pArrayListEmployee);
+    controller_ListGame(pArrayListJuegos);
     while(index == -1)
     {
-        id = obtenerNumero("\nINGRESE EL ID DEL EMPLEADO QUE QUIERA MODIFICAR");
-        index = controller_getIndexById(pArrayListEmployee,id);
+        id = obtenerNumero("\nINGRESE EL ID DEL JUEGO QUE QUIERA MODIFICAR");
+        index = controller_getIndexById(pArrayListJuegos,id);
         if(index == -1)
         {
             printf("EL ID INGRESADO NO EXISTE\n");
@@ -175,44 +241,50 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
         else
             break;
     }
-    pEmployee = ll_get(pArrayListEmployee,index);
+    pJuego = ll_get(pArrayListJuegos,index);
     while(keepEditting == 1)
     {
-        choise = obtenerNumero("1.MODIFICAR NOMBRE\n2.HORAS TRABAJADAS\n3.SUELDO\n ELECCION");
+        choise = obtenerNumero("MODIFICAR\n1.NOMBRE\n2.HORAS DE JUGABILIDAD\n3.PRECIO\n4.STOCK\n ELECCION");
         switch(choise)
         {
             case 1:
-                obtenerCadena("INGRESE EL NUEVO NOMBRE DEL EMPLEADO", nuevaCadena);
-                employee_setNombre(pEmployee,nuevaCadena);
+                obtenerCadena("INGRESE EL NUEVO NOMBRE DEL JUEGO", nuevaCadena);
+                videojuego_setNombre(pJuego,nuevaCadena);
                 break;
             case 2:
                 nuevoNumero = obtenerNumero("INGRESE LA NUEVA CANTIDAD DE HORAS TRABAJADAS POR EL EMPLEADO");
-                employee_setHorasTrabajadas(pEmployee,nuevoNumero);
+                videojuego_setHorasJugables(pJuego,nuevoNumero);
                 break;
             case 3:
-                nuevoNumero = obtenerNumero("INGRESE EL NUEVO SUELDO DEL EMPLEADO");
-                employee_setSueldo(pEmployee,nuevoNumero);
+                nuevoNumero = obtenerNumero("INGRESE EL PRECIO DEL JUEGO");
+                nuevoNumero = validacionDeNumero(nuevoNumero,1,8000);
+                videojuego_setPrecio(pJuego,nuevoNumero);
+                break;
+            case 4:
+                nuevoNumero = obtenerNumero("INGRESE EL NUEVO STOCK DEL JUEGO");
+                nuevoNumero = validacionDeNumero(nuevoNumero,1,10000);
+                videojuego_setStock(pJuego,nuevoNumero);
                 break;
         }
-        keepEditting = obtenerNumero("DESEA MODIFICAR OTRA CAMPO DEL EMPLEADO?\n1.SI//2.NO");
+        keepEditting = obtenerNumero("DESEA MODIFICAR OTRA CAMPO DEL JUEGO?\n1.SI//2.NO");
     }
     return 1;
 }
 
 
-int controller_removeEmployee(LinkedList* pArrayListEmployee)
+int controller_removeGame(LinkedList* pArrayListJuegos)
 {
     int id;
     int index = -1;
     int keepErasing = 1;
 
-    controller_ListEmployee(pArrayListEmployee);
+    controller_ListGame(pArrayListJuegos);
     while(keepErasing == 1)
     {
         while(index == -1)
         {
-            id = obtenerNumero("INGRESE EL ID DEL EMPLEADO QUE QUIERA MODIFICAR");
-            index = controller_getIndexById(pArrayListEmployee,id);
+            id = obtenerNumero("INGRESE EL ID DEL JUEGO QUE QUIERA BORRAR");
+            index = controller_getIndexById(pArrayListJuegos,id);
             if(index == -1)
             {
                 printf("EL ID INGRESADO NO EXISTE\n");
@@ -220,7 +292,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
             else
                 continue;
         }
-        ll_remove(pArrayListEmployee,index);
+        ll_remove(pArrayListJuegos,index);
         keepErasing = obtenerNumero("DESEA ELIMINAR OTRO EMPLEADO?\n1.SI//2.NO");
         if(keepErasing==1)
         {
@@ -233,32 +305,34 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
 }
 
 
-int controller_ListEmployee(LinkedList* pArrayListEmployee)
+int controller_ListGame(LinkedList* pArrayListJuegos)
 {
-    Employee* auxEmployee;
+    sJuego* pJuego;
     int i;
     int size;
     int id;
     char nombre[21];
     int horas;
-    int sueldo;
+    float precio;
+    int stock;
 
-    printf("ID-------NOMBRE-------HORAS TRABAJADAS--------SUELDO\n");
-    size=ll_len(pArrayListEmployee);
+    printf("ID-------NOMBRE-------HORAS JUGABLES--------PRECIO-------STOCK\n");
+    size=ll_len(pArrayListJuegos);
     for(i=0;i<size;i++)
     {
-        auxEmployee = ll_get(pArrayListEmployee,i);
-        employee_getId(auxEmployee,&id);
-        employee_getNombre(auxEmployee,nombre);
-        employee_getHorasTrabajadas(auxEmployee,&horas);
-        employee_getSueldo(auxEmployee,&sueldo);
-        printf("%d %12s %8d %10d\n",id,nombre,horas,sueldo);
+        pJuego = ll_get(pArrayListJuegos,i);
+        videojuego_getId(pJuego,&id);
+        videojuego_getNombre(pJuego,nombre);
+        videojuego_getHorasJugables(pJuego,&horas);
+        videojuego_getPrecio(pJuego,&precio);
+        videojuego_getStock(pJuego,&stock);
+        printf("%d %12s %8d %10f %8d\n",id,nombre,horas,precio,stock);
     }
     return 1;
 }
 
-
-int controller_sortEmployee(LinkedList* pArrayListEmployee)
+/*
+int controller_sortGame(LinkedList* pArrayListJuegos)
 {
     int choise;
     int upOrDown;
@@ -269,28 +343,29 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
     switch(choise)
     {
     case 1:
-        ll_sort(pArrayListEmployee,employee_CompareByName,upOrDown);
+        ll_sort(pArrayListJuegos,videojuego_CompareByName,upOrDown);
         break;
     case 2:
-        ll_sort(pArrayListEmployee,employee_CompareById,upOrDown);
+        ll_sort(pArrayListJuegos,videojuego_CompareById,upOrDown);
         break;
     }
     return 1;
 }
+*/ //ARREGLAR EL SORT
 
-
-int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
+int controller_saveAsText(char* path, LinkedList* pArrayListJuegos)
 {
     FILE* pFile;
-    Employee* employeeAux;
+    sJuego* auxJuego;
     int i;
     int size;
     char nombre[21];
     int id;
     int horas;
-    int sueldo;
+    float precio;
+    int stock;
 
-    if(pArrayListEmployee != NULL)
+    if(pArrayListJuegos != NULL)
     {
     pFile = fopen(path,"w");
     if(pFile == NULL)
@@ -300,16 +375,17 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     }
     else
     {
-        size = ll_len(pArrayListEmployee);
-        fprintf(pFile,"id,nombre,horastrabajadas,sueldo\n");
+        size = ll_len(pArrayListJuegos);
+        fprintf(pFile,"id,nombre,horasjugables,precio,stock\n");
         for(i=0;i<size;i++)
         {
-                employeeAux = (Employee*)ll_get(pArrayListEmployee,i);
-                employee_getId(employeeAux, &id);
-                employee_getNombre(employeeAux,nombre);
-                employee_getHorasTrabajadas(employeeAux,&horas);
-                employee_getSueldo(employeeAux, &sueldo);
-                fprintf(pFile,"%d,%s,%d,%d\n",id,nombre,horas,sueldo);
+                auxJuego = (sJuego*)ll_get(pArrayListJuegos,i);
+                videojuego_getId(auxJuego, &id);
+                videojuego_getNombre(auxJuego,nombre);
+                videojuego_getHorasJugables(auxJuego,&horas);
+                videojuego_getPrecio(auxJuego, &precio);
+                videojuego_getStock(auxJuego, &stock);
+                fprintf(pFile,"%d,%s,%d,%f,%d\n",id,nombre,horas,precio,stock);
         }
     }
     fclose(pFile);
@@ -320,15 +396,15 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
 }
 
 
-int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
+int controller_saveAsBinary(char* path, LinkedList* pArrayListJuegos)
 {
     FILE* pFile;
-    Employee* employee;
+    sJuego* pJuego;
     int size;
     int i;
-    char cabecera[33]={"id,nombre,horastrabajadas,sueldo\n"};
+    char cabecera[37]={"id,nombre,horasJugables,precio,stock\n"};
 
-    if(pArrayListEmployee != NULL)
+    if(pArrayListJuegos != NULL)
     {
     pFile = fopen(path,"wb");
     if(pFile == NULL)
@@ -338,12 +414,12 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
     }
     else
     {
-        fwrite(cabecera,sizeof(char[33]),1,pFile);
-        size = ll_len(pArrayListEmployee);
+        fwrite(cabecera,sizeof(char[37]),1,pFile);
+        size = ll_len(pArrayListJuegos);
         for(i=0;i<size;i++)
         {
-                employee = (Employee*)ll_get(pArrayListEmployee,i);
-                fwrite(employee,sizeof(Employee),1,pFile);
+                pJuego= (sJuego*)ll_get(pArrayListJuegos,i);
+                fwrite(pJuego,sizeof(sJuego),1,pFile);
         }
     }
     fclose(pFile);

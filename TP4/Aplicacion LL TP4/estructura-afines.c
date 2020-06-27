@@ -33,7 +33,7 @@ int videojuego_setStock(sJuego* juego,int stock)
     {
         return 0;
     }
-    juego->stock = id;
+    juego->stock = stock;
     return 1;
 
 }
@@ -44,7 +44,7 @@ int videojuego_getStock(sJuego* juego,int* stock)
         printf("NO ES POSIBLE SETEAR EL NOMBRE DEBIDO A QUE EL PUNTERO APUNTA A NULO");
         return 0;
     }
-    *id = juego->stock;
+    *stock = juego->stock;
     return 1;
 
 }

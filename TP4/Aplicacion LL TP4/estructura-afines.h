@@ -22,7 +22,7 @@ sJuego* videojuego_new();
  * \param sueldoStr int*
  * \return Employee*
  **/
-sJuego* videojuego_newParametros(int* idStr,char* nombreStr,int* horasJugablesStr,int* precioStr,int*stockStr);
+sJuego* videojuego_newParametros(int* idStr,char* nombreStr,int* horasJugablesStr,float* precioStr, int* stockStr);
 
 int videojuego_setStock(sJuego* juego,int stock);
 

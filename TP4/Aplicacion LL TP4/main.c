@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "LinkedList.h"
-#include "Controller.h"
+#include "controlador.h"
 #include "estructura-afines.h"
 #include "validaciones.h"
 int main()
@@ -11,43 +11,9 @@ int main()
     int choise;
     int control;
 // LECTURA DE ARCHIVO DE JUEGOS ACTIVOS
-    control = controller_loadFromText("juegos_activos.csv", juegosActivos);
-    if(control == 1)
-    {
-        printf("CARGA DE ARCHIVO PRINCIPAL DE JUEGOS ACTIVOS: OK...");
-    }
-    else
-    {
-        printf("ERROR EN LA CARGA DEL ARCHIVO PRINCIPAL DE JUEGOS ACTIVOS,SE INTETARÁ ABRIR EL BACKUP\n");
-        control = controller_loadFromBinary("juegos_activos_back.bin",juegosActivos);
-        if(control == 1)
-        {
-            printf("CARGA DE DESDE BACKUP: OK...");
-        }
-        else
-        {
-            printf("ERROR EN LA CARGA DEL ARCHIVO BACKUP DE JUEGOS ACTIVOS");
-        }
-    }
+    controller_cargaActivos(juegosActivos);
 // LECTURA DE ARCHIVO DE JUEGOS ELIMINADOS
-    control = controller_loadFromText("juegos_eliminados.csv", juegosActivos);
-    if(control == 1)
-    {
-        printf("CARGA DE ARCHIVO DE JUEGOS ELIMINADOS: OK...");
-    }
-    else
-    {
-        printf("ERROR EN LA CARGA DEL ARCHIVO PRINCIPAL DE JUEGOS ELIMINADOS,SE INTETARÁ ABRIR EL BACKUP\n");
-        control = controller_loadFromBinary("juegos_eliminados_back.bin",juegosActivos);
-        if(control == 1)
-        {
-            printf("CARGA DESDE BACKUP: OK...");
-        }
-        else
-        {
-            printf("ERROR EN LA CARGA DEL ARCHIVO BACKUP DE JUEGOS ELIMINADOS");
-        }
-    }
+    controller_cargaEliminados(juegosEliminados);
 
     choise = menuOpciones();
     for(;;)
@@ -92,11 +58,12 @@ int main()
         if(control == 1) printf("LISTADO DE EMPLEADOS: OK...");
         else printf("LISTADO DE EMPLEADOS: FALLIDO");
         break;
-    case 7:
+    /*case 7:
         control = controller_sortGame(juegosActivos);
         if(control == 1) printf("ORDENAMIENTO DE EMPLEADOS: OK...");
         else printf("ORDENAMIENTO DE EMPLEADOS: FALLIDO");
         break;
+    */
     }
     choise = reCall();
     }
@@ -141,8 +108,9 @@ int main()
         printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS EN BACKUP, FALLIDO");
     }
 
-//ELIMINA LA LL ANTES DE CERRAR EL PROGRAMA.
-    ll_deleteLinkedList(miLista);
+//ELIMINA LAS LL ANTES DE CERRAR EL PROGRAMA.
+    ll_deleteLinkedList(juegosActivos);
+    ll_deleteLinkedList(juegosEliminados);
 }
 
 
