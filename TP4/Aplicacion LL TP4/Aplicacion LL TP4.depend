@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1593211145 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1593203669 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\linkedlist.h
+
+1593216141 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\validaciones.c
+	"validaciones.h"
+	"string.h"
+	<ctype.h>
+
+1592004147 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+
