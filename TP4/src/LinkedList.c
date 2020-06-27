@@ -130,7 +130,7 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
     {
 
         this->pFirstNode = nuevoNodo;
-        nuevoNodo->pNextNode==NULL;
+        nuevoNodo->pNextNode=NULL;
         nuevoNodo->pElement = pElement;
     }
     else if(nodeIndex>0 && nodeIndex<sizeOfLL)
@@ -578,6 +578,7 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
 
     if(this != NULL && pFunc != NULL && (order==0||order==1))
     {
+        returnAux = 0;
         size = ll_len(this);
 
         for(i=0;i<size-1;i++)
@@ -586,30 +587,35 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
             {
                 pElemento1 = ll_get(this,i);
                 pElemento2 = ll_get(this,j);
-                if(pFunc(pElemento1,pElemento2)<0 && order == 1)
+                if(order == 0)
                 {
-                    pAux = pElemento1;
-                    pElemento1 = pElemento2;
-                    pElemento2 = pAux;
+                    if(pFunc(pElemento1,pElemento2)<0)
+                    {
+                        pAux = pElemento1;
+                        ll_set(this,i,pElemento2);
+                        ll_set(this,j,pElemento1);
+                    }
+                    else if(pFunc(pElemento1,pElemento2)>0)
+                    {
+                        continue;
+                    }
                 }
-                else if(pFunc(pElemento1,pElemento2)>0 && order == 1)
+                else
                 {
-                    continue;
-                }
-                if(pFunc(pElemento1,pElemento2)<0 && order == 0)
-                {
-                     continue;
-                }
-                else if(pFunc(pElemento1,pElemento2)>0 && order == 0)
-                {
-                    pAux = pElemento1;
-                    pElemento1 = pElemento2;
-                    pElemento2 = pAux;
+                    if(pFunc(pElemento1,pElemento2)>0)
+                    {
+                         continue;
+                    }
+                    else if(pFunc(pElemento1,pElemento2)<0)
+                    {
+                        pAux = pElemento1;
+                        ll_set(this,i,pElemento2);
+                        ll_set(this,j,pElemento1);
+                    }
                 }
             }
         }
 
-        returnAux = 0;
     }
     return returnAux;
 }
