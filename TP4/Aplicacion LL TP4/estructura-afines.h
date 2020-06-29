@@ -101,7 +101,7 @@ int videojuego_getPrecio(sJuego* this,float* precioJuego);
  * \param e2 Employee*
  * \return int
  **/
-int videojuego_CompareByName(sJuego* e1, sJuego* e2);
+int videojuego_CompareByName(void* e1, void* e2);
 
 
 /** \brief Compara el campo ID
@@ -110,5 +110,5 @@ int videojuego_CompareByName(sJuego* e1, sJuego* e2);
  * \param e2 Employee*
  * \return int
  **/
-int videojuego_CompareById(sJuego* e1, sJuego* e2);
+int videojuego_CompareById(void* e1, void* e2);
 

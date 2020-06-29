@@ -62,6 +62,15 @@ int obtenerNumero(char mensaje[])
     return numero;
 }
 
+float obtenerFlotante(char mensaje[])
+{
+    float numero;
+    printf("%s: ", mensaje);
+    fflush(stdin);
+    scanf("%f", &numero);
+    return numero;
+}
+
 char obtenerCaracter(char mensaje[])
 {
     char caracter;
@@ -73,22 +82,10 @@ char obtenerCaracter(char mensaje[])
 int obtenerCadena(char mensaje[],char cadena[])
 {
     char string[30];
-    int i;
-
     printf("%s: ",mensaje);
     fflush(stdin);
     fgets(string,30,stdin);
     strtok(string,"\n");
-    fflush(stdin);
-     for(i=0;i<30;i++)
-        {
-            if((string[i]== '0'||string[i]== '1'||string[i]== '2'||string[i]== '3'||string[i]== '4'||string[i]== '5'||string[i]== '6'
-               ||string[i]== '7'||string[i]== '8'||string[i]== '9') && string[i]!= '\n')
-            {
-                printf("EL NOMBRE CONTIENE NUMEROS\n");
-                return 0;
-            }
-        }
     strcpy(cadena,string);
     return 1;
 }

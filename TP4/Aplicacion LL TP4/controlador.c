@@ -43,7 +43,7 @@ void controller_cargaActivos(LinkedList* pArrayListJuegos)
     control = controller_loadFromText("juegos_activos.csv", pArrayListJuegos);
     if(control == 1)
     {
-        printf("CARGA DE ARCHIVO PRINCIPAL DE JUEGOS ACTIVOS: OK...");
+        printf("CARGA DE ARCHIVO PRINCIPAL DE JUEGOS ACTIVOS: OK...\n");
     }
     else
     {
@@ -51,7 +51,7 @@ void controller_cargaActivos(LinkedList* pArrayListJuegos)
         control = controller_loadFromBinary("juegos_activos_back.bin",pArrayListJuegos);
         if(control == 1)
         {
-            printf("CARGA DE DESDE BACKUP: OK...");
+            printf("CARGA DE DESDE BACKUP: OK...\n");
         }
         else
         {
@@ -66,7 +66,7 @@ void controller_cargaEliminados(LinkedList* pArrayListJuegos)
     control = controller_loadFromText("juegos_eliminados.csv", pArrayListJuegos);
     if(control == 1)
     {
-        printf("CARGA DE ARCHIVO DE JUEGOS ELIMINADOS: OK...");
+        printf("CARGA DE ARCHIVO DE JUEGOS ELIMINADOS: OK...\n\n");
     }
     else
     {
@@ -74,7 +74,7 @@ void controller_cargaEliminados(LinkedList* pArrayListJuegos)
         control = controller_loadFromBinary("juegos_eliminados_back.bin",pArrayListJuegos);
         if(control == 1)
         {
-            printf("CARGA DESDE BACKUP: OK...");
+            printf("CARGA DESDE BACKUP: OK...\n");
         }
         else
         {
@@ -162,8 +162,7 @@ int controller_addGame(LinkedList* pArrayListJuegos)
         }while(dev==0);
         horasJugables = obtenerNumero("INGRESE LA CANTIDAD DE HORAS DE JUGABILIDAD DEL VIDEOJUEGO");
         horasJugables= validacionDeNumero(horasJugables,1,1000000);
-        precio = obtenerNumero("INGRESE EL PRECIO DEL JUEGO");
-        precio = validacionDeNumero(precio,1,10000);
+        precio = obtenerFlotante("INGRESE EL PRECIO DEL JUEGO");
         stock = obtenerNumero("INGRESE EL STOCK TOTAL DEL JUEGO");
         stock = validacionDeNumero(stock,1,1000);
         id = controller_setId(pArrayListJuegos);
@@ -331,7 +330,7 @@ int controller_ListGame(LinkedList* pArrayListJuegos)
     return 1;
 }
 
-/*
+
 int controller_sortGame(LinkedList* pArrayListJuegos)
 {
     int choise;
@@ -342,16 +341,15 @@ int controller_sortGame(LinkedList* pArrayListJuegos)
     upOrDown = validacionDeNumero(upOrDown,0,1);
     switch(choise)
     {
-    case 1:
-        ll_sort(pArrayListJuegos,videojuego_CompareByName,upOrDown);
-        break;
-    case 2:
-        ll_sort(pArrayListJuegos,videojuego_CompareById,upOrDown);
-        break;
+        case 1:
+            ll_sort(pArrayListJuegos,videojuego_CompareByName,upOrDown);
+            break;
+        case 2:
+            ll_sort(pArrayListJuegos,videojuego_CompareById,upOrDown);
+            break;
     }
     return 1;
 }
-*/ //ARREGLAR EL SORT
 
 int controller_saveAsText(char* path, LinkedList* pArrayListJuegos)
 {
@@ -402,7 +400,6 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListJuegos)
     sJuego* pJuego;
     int size;
     int i;
-    char cabecera[37]={"id,nombre,horasJugables,precio,stock\n"};
 
     if(pArrayListJuegos != NULL)
     {
@@ -414,7 +411,6 @@ int controller_saveAsBinary(char* path, LinkedList* pArrayListJuegos)
     }
     else
     {
-        fwrite(cabecera,sizeof(char[37]),1,pFile);
         size = ll_len(pArrayListJuegos);
         for(i=0;i<size;i++)
         {

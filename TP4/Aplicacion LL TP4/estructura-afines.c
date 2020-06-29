@@ -141,8 +141,10 @@ int videojuego_getHorasJugables(sJuego* juego,int* horasJugables)
 }
 
 
-int videojuego_CompareByName(sJuego* juego1, sJuego* juego2)
+int videojuego_CompareByName(void* e1, void* e2)
 {
+    sJuego* juego1 = (sJuego*)e1;
+    sJuego* juego2 = (sJuego*)e2;
     if(juego1== NULL || juego2 == NULL)
     {
         printf("NO ES POSIBLE SETEAR EL NOMBRE DEBIDO A QUE ALGUNO DE LOS PUNTEROS APUNTA A NULO");
@@ -151,8 +153,10 @@ int videojuego_CompareByName(sJuego* juego1, sJuego* juego2)
     return strcmp(juego1->nombreVideoJuego,juego2->nombreVideoJuego);
 }
 
-int videojuego_CompareById(sJuego* juego1, sJuego* juego2)
+int videojuego_CompareById(void* e1, void* e2)
 {
+    sJuego* juego1 = (sJuego*)e1;
+    sJuego* juego2 = (sJuego*)e2;
     if(juego1== NULL || juego2 == NULL)
     {
         printf("NO ES POSIBLE SETEAR EL NOMBRE DEBIDO A QUE ALGUNO DE LOS PUNTEROS APUNTA A NULO");

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1593211145 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\linkedlist.c
+1593431752 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -7,33 +7,33 @@
 
 1593203669 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\linkedlist.h
 
-1593216141 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\validaciones.c
+1593394560 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\validaciones.c
 	"validaciones.h"
 	"string.h"
 	<ctype.h>
 
-1592004147 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\validaciones.h
+1593394573 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\validaciones.h
 	<stdio.h>
 	<stdlib.h>
 
-1593227232 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\guardado.c
+1593387179 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\guardado.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"estructura-afines.h"
 	"guardado.h"
 
-1593283790 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\estructura-afines.h
+1593395220 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\estructura-afines.h
 
 1593216094 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\guardado.h
 
-1593281523 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\estructura-afines.c
+1593399996 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\estructura-afines.c
 	<stdlib.h>
 	<stdio.h>
 	"estructura-afines.h"
 	<string.h>
 
-1593285577 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\main.c
+1593394387 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -43,7 +43,7 @@
 
 1593285569 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\controlador.h
 
-1593286693 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\controlador.c
+1593401233 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp4\aplicacion ll tp4\controlador.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

@@ -19,7 +19,7 @@ int main()
     for(;;)
     {
 
-        if(choise==10)
+        if(choise==0)
         {
             choise = obtenerNumero("ESTA SEGURO QUE DESEA SALIR DEL PROGRAMA?\n1.SI // 2. NO");
             if(choise==1) break;
@@ -49,21 +49,20 @@ int main()
     case 5:
         // LISTADO DE ACTIVOS
         control = controller_ListGame(juegosActivos);
-        if(control == 1) printf("LISTADO DE EMPLEADOS: OK...");
-        else printf("LISTADO DE EMPLEADOS: FALLIDO");
+        if(control == 1) printf("LISTADO DE JUEGOS: OK...");
+        else printf("LISTADO DE JUEGOS: FALLIDO");
         break;
     case 6:
         // LISTADO DE ELIMINADOS
         control = controller_ListGame(juegosEliminados);
-        if(control == 1) printf("LISTADO DE EMPLEADOS: OK...");
-        else printf("LISTADO DE EMPLEADOS: FALLIDO");
+        if(control == 1) printf("LISTADO DE JUEGOS: OK...");
+        else printf("LISTADO DE JUEGOS: FALLIDO");
         break;
-    /*case 7:
+    case 7:
         control = controller_sortGame(juegosActivos);
-        if(control == 1) printf("ORDENAMIENTO DE EMPLEADOS: OK...");
-        else printf("ORDENAMIENTO DE EMPLEADOS: FALLIDO");
+        if(control == 1) printf("ORDENAMIENTO DE JUEGOS: OK...");
+        else printf("ORDENAMIENTO DE JUEGOS: FALLIDO");
         break;
-    */
     }
     choise = reCall();
     }
@@ -73,39 +72,39 @@ int main()
     control = controller_saveAsText("juegos_activos.csv",juegosActivos);
     if(control == 1)
     {
-        printf ("GUARDADO DE LISTA DE JUEGOS ACTIVOS: OK...");
+        printf ("GUARDADO DE LISTA DE JUEGOS ACTIVOS: OK...\n");
     }
     else
     {
-        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS, FALLIDO");
+        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS, FALLIDO\n");
     }
     control = controller_saveAsBinary("juegos_activos_back.bin",juegosActivos);
     if(control == 1)
     {
-        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS EN BACKUP: OK...");
+        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS EN BACKUP: OK...\n");
     }
     else
     {
-        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS EN BACKUP, FALLIDO");
+        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS EN BACKUP, FALLIDO\n");
     }
 // GUARDADO DE LISTA DE JUEGOS ELIMINADOS EN PRINCIPAL Y BACKUP
     control = controller_saveAsBinary("juegos_eliminados.csv",juegosEliminados);
     if(control == 1)
     {
-        printf ("GUARDADO DE LISTA DE JUEGOS ACTIVOS: OK...");
+        printf ("GUARDADO DE LISTA DE JUEGOS ACTIVOS: OK...\n");
     }
     else
     {
-        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS, FALLIDO");
+        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS, FALLIDO\n");
     }
-    control = controller_saveAsBinary("juegos_activos_back.bin",juegosEliminados);
+    control = controller_saveAsBinary("juegos_eliminados_back.bin",juegosEliminados);
     if(control == 1)
     {
-        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS EN BACKUP: OK...");
+        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS EN BACKUP: OK...\n");
     }
     else
     {
-        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS EN BACKUP, FALLIDO");
+        printf("GUARDADO DE LISTA DE JUEGOS ACTIVOS EN BACKUP, FALLIDO\n");
     }
 
 //ELIMINA LAS LL ANTES DE CERRAR EL PROGRAMA.

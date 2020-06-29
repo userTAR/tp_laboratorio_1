@@ -19,7 +19,7 @@ int parser_JuegoFromText(FILE* pFile, LinkedList* pArrayListJuegos)
     int horasNum;
     float precioNum;
     int stockNum;
-    //fseek(pFile,33,SEEK_SET); // REVISAR EL FSEEK DEBIDO A CABECERA DISTINTA
+    fseek(pFile,37,SEEK_SET);
     while(!feof(pFile))
     {
     fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,horas,precio,stock); //hay error
@@ -38,7 +38,7 @@ int parser_JuegoFromBinary(FILE* pFile, LinkedList* pArrayListJuegos)
     sJuego* juego;
     int devFread;
 
-    //fseek(pFile,33,SEEK_SET); // REVISAR EL FSEEK DEBIDO A CABECERA DISTINTA
+    fseek(pFile,37,SEEK_SET); // REVISAR EL FSEEK DEBIDO A CABECERA DISTINTA
     while(!feof(pFile))
     {
         juego = videojuego_new();

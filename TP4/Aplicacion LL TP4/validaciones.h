@@ -36,6 +36,8 @@ char validacionDeLetra(char letra, char maximo, char minimo);
  **/
 int obtenerNumero(char[]);
 
+float obtenerFlotante(char mensaje[]);
+
 /** \brief Se le pasa como parametro un mensaje predeterminado y la funcion pide ingresar un caracter y devuelve el mismo
  *
  * \param char[]
