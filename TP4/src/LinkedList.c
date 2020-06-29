@@ -585,38 +585,28 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
         {
             for(j=i+1;j<size;j++)
             {
-                pElemento1 = ll_get(this,i);
-                pElemento2 = ll_get(this,j);
+                pElemento1 = (void*)ll_get(this,i);
+                pElemento2 = (void*)ll_get(this,j);
                 if(order == 0)
                 {
-                    if(pFunc(pElemento1,pElemento2)<0)
+                    if(pFunc((void*)pElemento1,(void*)pElemento2)<0)
                     {
                         pAux = pElemento1;
                         ll_set(this,i,pElemento2);
-                        ll_set(this,j,pElemento1);
-                    }
-                    else if(pFunc(pElemento1,pElemento2)>0)
-                    {
-                        continue;
+                        ll_set(this,j,pAux);
                     }
                 }
                 else
                 {
-                    if(pFunc(pElemento1,pElemento2)>0)
-                    {
-                         continue;
-                    }
-                    else if(pFunc(pElemento1,pElemento2)<0)
+                    if(pFunc((void*)pElemento1,(void*)pElemento2)>0)
                     {
                         pAux = pElemento1;
                         ll_set(this,i,pElemento2);
-                        ll_set(this,j,pElemento1);
+                        ll_set(this,j,pAux);
                     }
                 }
             }
         }
-
     }
     return returnAux;
 }
-
