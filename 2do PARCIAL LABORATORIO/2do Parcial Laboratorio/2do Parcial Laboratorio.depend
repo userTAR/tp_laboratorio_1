@@ -1,0 +1,111 @@
+# depslib dependency file v1.0
+1593467663 source:c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1593442050 c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\linkedlist.h
+
+1593438314 source:c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\validaciones.c
+	"validaciones.h"
+	"string.h"
+	<ctype.h>
+
+1593394573 c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+
+1593466726 source:c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\guardado.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"estructura-afines.h"
+	"guardado.h"
+
+1593470943 c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\estructura-afines.h
+
+1593463439 c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\guardado.h
+
+1593471017 source:c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\estructura-afines.c
+	<stdlib.h>
+	<stdio.h>
+	"estructura-afines.h"
+	<string.h>
+
+1593470796 source:c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\controlador.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"estructura-afines.h"
+	"guardado.h"
+	"validaciones.h"
+	"controlador.h"
+
+1593470829 c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\controlador.h
+
+1593470678 source:c:\users\familia rivero\desktop\clases virtuales\programacion\parciales\2do parcial laboratorio\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"LinkedList.h"
+	"controlador.h"
+	"estructura-afines.h"
+	"validaciones.h"
+
+1593521340 source:c:\users\familia rivero\desktop\2do parcial laboratorio\guardado.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"estructura-afines.h"
+	"guardado.h"
+
+1593517746 c:\users\familia rivero\desktop\2do parcial laboratorio\linkedlist.h
+
+1593517826 c:\users\familia rivero\desktop\2do parcial laboratorio\estructura-afines.h
+
+1593516059 c:\users\familia rivero\desktop\2do parcial laboratorio\guardado.h
+
+1593517837 source:c:\users\familia rivero\desktop\2do parcial laboratorio\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1593521793 source:c:\users\familia rivero\desktop\2do parcial laboratorio\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"LinkedList.h"
+	"controlador.h"
+	"estructura-afines.h"
+	"validaciones.h"
+
+1593521598 c:\users\familia rivero\desktop\2do parcial laboratorio\controlador.h
+
+1593394573 c:\users\familia rivero\desktop\2do parcial laboratorio\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+
+1593509809 source:c:\users\familia rivero\desktop\2do parcial laboratorio\validaciones.c
+	"validaciones.h"
+	"string.h"
+	<ctype.h>
+
+1593520325 source:c:\users\familia rivero\desktop\2do parcial laboratorio\estructura-afines.c
+	<stdlib.h>
+	<stdio.h>
+	"estructura-afines.h"
+	<string.h>
+
+1593521673 source:c:\users\familia rivero\desktop\2do parcial laboratorio\controlador.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"estructura-afines.h"
+	"guardado.h"
+	"validaciones.h"
+	"controlador.h"
+
