@@ -42,4 +42,19 @@ float multpl(float, float);
  * \return int
  *
  */
-int factorial(float);
+double factorial(float);
+
+
+int switching(int opcion);
+
+float ingreso(char operando[], int numero);
+
+void print_suma(int comparacion, float suma);
+
+void print_resta(int comparacion, float resta);
+
+void print_multiplc(int comparacion, float multiplc);
+
+void print_div(int comparacion, float division, float B);
+
+void print_factorial(double factorialA, double factorialB);

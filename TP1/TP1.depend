@@ -8,11 +8,10 @@
 	<stdio.h>
 	<stdlib.h>
 
-1587154903 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\main.c
+1593717230 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\main.c
 	<stdio.h>
 	<stdlib.h>
-	"opMate.h"
-	"funcVarias.h"
+	"menu.h"
 
 1586729722 source:c:\users\familia rivero\desktop\clases virtuales\programacion\bibliotecas personalizadas\funcvarias.c
 	"funcVarias.h"
@@ -29,10 +28,29 @@
 	<stdlib.h>
 	<string.h>
 
-1586815800 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\opmate.h
+1593720416 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\opmate.h
 	<stdio.h>
 	<stdlib.h>
 
-1587152044 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\opmate.c
+1593715960 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\opmate.c
 	"opMate.h"
+	"validaciones.h"
+
+1593713325 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\validaciones.c
+	"validaciones.h"
+	"string.h"
+	<ctype.h>
+
+1593713102 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\validaciones.h
+	<stdio.h>
+	<stdlib.h>
+
+1593720789 source:c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\menu.c
+	"menu.h"
+	"validaciones.h"
+	"opMate.h"
+
+1593716577 c:\users\familia rivero\desktop\clases virtuales\programacion\trabajos prácticos\tp_laboratorio_1\tp1\menu.h
+	<stdio.h>
+	<stdlib.h>
 
